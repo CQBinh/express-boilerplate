@@ -1,5 +1,5 @@
 {
-  "name": "Express template",
+  "name": "Express_Template",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,8 +11,8 @@
     "precommit": "npm run lint"
   },
   "pre-commit": [
-    "precommit-msg",
-    "precommit"
+    /* "precommit-msg",
+    "precommit" */
   ],
   "babel": {
     "presets": [

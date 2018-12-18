@@ -1,84 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af7916a7-99dc-4ccf-8edc-83e3102d38b1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/init/demo/excel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/init/demo/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/init/demo/migrate-merchant-emails.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/init/demo/send-balance-sheet-mail.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/locales/balance-sheet.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/modules/excel/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/modules/excel/merchant-bill-history.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/modules/mailer/balance-sheet.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/modules/mailer/templates/balance-sheet.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/modules/mailer/templates/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/modules/mailer/transporter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/balance-sheet/controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/balance-sheet/helper.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/balance-sheet/hook.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/balance-sheet/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/balance-sheet/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/balance-sheet/route.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/balance-sheet/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/bill/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/bill/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/bill/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/campaign-automation/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/campaign-automation/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/campaign-automation/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/campaign-manual/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/campaign-manual/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/campaign-manual/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/category/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/chain/controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/chain/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/chain/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/chain/route.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/chain/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/common/controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/common/route.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/merchant/controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/merchant/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/merchant/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/merchant/route.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/merchant/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/merchant/validation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/photo/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/photo/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/reward/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/reward/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/reward/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/setting/controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/setting/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/setting/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/setting/route.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/setting/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/setting/validation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/system/authentication.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/system/middleware.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/user-and-campaign-automation-status/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/user-and-campaign-automation-status/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/user-and-campaign-automation-status/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/user-and-campaign-manual-status/model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/user-and-campaign-manual-status/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/packages/user-and-campaign-manual-status/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/schedules/balance-sheet-chain.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/schedules/balance-sheet-merchant.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/schedules/merchant-owe.js" afterPath="$PROJECT_DIR$/src/schedules/foo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ecosystem.config.js" afterPath="$PROJECT_DIR$/ecosystem.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/configs/env/cross-env/client.js" afterPath="$PROJECT_DIR$/src/configs/env/cross-env/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/init/index.js" afterPath="$PROJECT_DIR$/src/init/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/locales/index.js" afterPath="$PROJECT_DIR$/src/locales/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model.js" afterPath="$PROJECT_DIR$/src/model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/packages/user/controller.js" afterPath="$PROJECT_DIR$/src/packages/user/controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/packages/user/query.js" afterPath="$PROJECT_DIR$/src/packages/user/query.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/packages/user/route.js" afterPath="$PROJECT_DIR$/src/packages/user/route.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/packages/user/static.js" afterPath="$PROJECT_DIR$/src/packages/user/static.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/route.js" afterPath="$PROJECT_DIR$/src/route.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/schedules/index.js" afterPath="$PROJECT_DIR$/src/schedules/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/pre-query.js" afterPath="$PROJECT_DIR$/src/utils/pre-query.js" />
-    </list>
+    <list default="true" id="af7916a7-99dc-4ccf-8edc-83e3102d38b1" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -402,7 +325,7 @@
         <state relative-caret-position="90">
           <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -460,7 +383,7 @@
         <state relative-caret-position="180">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -526,7 +449,7 @@
         <state relative-caret-position="391">
           <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -536,7 +459,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -562,7 +485,7 @@
         <state relative-caret-position="420">
           <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#37#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -588,7 +511,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -622,7 +545,7 @@
         <state relative-caret-position="345">
           <caret line="23" column="48" lean-forward="true" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -685,7 +608,7 @@
         <state relative-caret-position="330">
           <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>

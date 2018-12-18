@@ -4,7 +4,7 @@
  */
 
 import express from 'express'
-import middleware from '../system/middleware'
+// import middleware from '../system/middleware'
 import UserCtrl from './controller'
 import validation from './validation'
 import { preQuery } from '../../utils'
@@ -24,7 +24,7 @@ const router = express.Router()
  * @apiGroup Me
  *
  */
-router.get('/me', middleware.requiresLogin, UserCtrl.me)
+router.get('/me', UserCtrl.me)
 
 router.param('userId', preQuery.user)
 

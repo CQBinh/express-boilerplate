@@ -4,7 +4,7 @@ export default () => {
   const api = Router()
 
   // Authenticate with token
-  api.use('*', require('./packages/system/authentication').default)
+  // api.use('*', require('./packages/system/authentication').default)
 
   // Mount components
   api.use('/users', require('./packages/user/route').default)
