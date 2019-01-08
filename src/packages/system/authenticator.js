@@ -8,7 +8,7 @@ import errorUtil from '../../utils/error'
 
 const router = express.Router()
 const numericFields = ['page']
-const whiteList = ['/sessions', '/register']
+const whiteList = ['/sessions', '/users/register']
 
 router.use((req, res, next) => {
   // Cast all number in query data to number type instead of string

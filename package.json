@@ -6,15 +6,8 @@
   "scripts": {
     "dev": "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
     "start": "nodemon src/index.js --exec \"NODE_ENV=production node -r dotenv/config -r babel-register\"",
-    "test": "jest --forceExit --colors test",
-    "lint": "eslint --ext .js src",
-    "precommit-msg": "echo 'Pre-commit checks ...' && exit 0",
-    "precommit": "npm run lint"
+    "lint": "eslint --ext .js src"
   },
-//  "pre-commit": [
-//    "precommit-msg",
-//    "precommit"
-//  ],
   "babel": {
     "presets": [
       [
@@ -28,12 +21,6 @@
     ],
     "plugins": [
       "transform-object-rest-spread"
-    ]
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "modulePathIgnorePatterns": [
-      "src/configs/env/test.js"
     ]
   },
   "nodemonConfig": {
@@ -85,7 +72,6 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0",
-    "pre-commit": "^1.2.2"
+    "eslint-plugin-react": "^7.7.0"
   }
 }
