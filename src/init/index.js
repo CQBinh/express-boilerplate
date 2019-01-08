@@ -5,6 +5,6 @@ export default async () => {
   global.valueAll = 'all'
   await connectDb()
   require('../logger')
-  require('../model')
+  require('../models')
   require('../schedules')
 }

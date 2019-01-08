@@ -1,13 +1,15 @@
 import { Router } from 'express'
+import sessionRoute from './packages/session/route'
+import userRoute from './packages/user/route'
+import authenticator from './packages/system/authenticator'
 
 export default () => {
   const api = Router()
 
-  // Authenticate with token
-  // api.use('*', require('./packages/system/authentication').default)
+  api.use('*', authenticator)
 
-  // Mount components
-  api.use('/users', require('./packages/user/route').default)
+  api.use('/sessions', sessionRoute)
+  api.use('/users', userRoute)
 
   return api
 }

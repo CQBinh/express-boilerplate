@@ -1,18 +1,17 @@
-import { response } from './response'
+import responseBuilder from './response-builder'
 import format from './format'
 import validation from './validation'
 import { notFoundLocale } from '../locales'
-import { UserModel } from '../model'
+import { User } from '../models'
 
 function query(req, res, next, _id, Model, message) {
   if (!validation.isObjectId(_id)) {
-    return res.status(404).jsonp(response(false, {}, message, 404))
+    return res.status(404).jsonp(responseBuilder.build(false, {}, { message }))
   }
 
-  // Find
   Model.findOne({ _id }, (error, doc) => {
     if (error || !doc) {
-      res.status(404).jsonp(response(false, {}, message, 404))
+      res.status(404).jsonp(responseBuilder.build(false, {}, { message }))
     } else {
       req[`${format.lowerCaseFirstLetter(Model.modelName)}Data`] = doc
       next()
@@ -21,10 +20,9 @@ function query(req, res, next, _id, Model, message) {
 }
 
 const user = (req, res, next, _id) => {
-  query(req, res, next, _id, UserModel, notFoundLocale.user)
+  query(req, res, next, _id, User, notFoundLocale.user)
 }
 
-// Export
 export default {
   user
 }

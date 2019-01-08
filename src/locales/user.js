@@ -1,3 +1,16 @@
+import { userCode } from './response-code'
+
 export default {
-  belongsToAnotherRole: 'Người dùng này hiện đang được gắn cho 1 role khác',
+  invalidEmailFormat: {
+    code: userCode.invalidEmailFormatCode,
+    message: 'Email invalid'
+  },
+  notFound: {
+    code: userCode.notFound,
+    message: 'User not found'
+  },
+  userExisted: {
+    code: userCode.userExisted,
+    message: 'User existed'
+  }
 }

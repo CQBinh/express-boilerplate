@@ -1,6 +1,7 @@
 {
   "name": "Express_Template",
-  "version": "0.0.0",
+  "author": "<CAO Quang Binh> caoquangbinh@gmail.com",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
@@ -10,10 +11,10 @@
     "precommit-msg": "echo 'Pre-commit checks ...' && exit 0",
     "precommit": "npm run lint"
   },
-  "pre-commit": [
-    /* "precommit-msg",
-    "precommit" */
-  ],
+//  "pre-commit": [
+//    "precommit-msg",
+//    "precommit"
+//  ],
   "babel": {
     "presets": [
       [
@@ -56,6 +57,7 @@
     "dotenv": "^5.0.1",
     "exceljs": "^1.1.0",
     "express": "~4.16.0",
+    "express-validation": "^1.0.2",
     "farmhash": "^2.0.5",
     "helmet": "^3.12.0",
     "http-errors": "~1.6.2",

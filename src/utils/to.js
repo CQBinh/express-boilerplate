@@ -1,7 +1,7 @@
 export default (promise) => {
   return promise.then((data) => {
-    return { error: null, data }
+    return [null, data]
   }).catch((error) => {
-    return { error }
+    return [error]
   })
 }

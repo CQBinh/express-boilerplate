@@ -9,8 +9,9 @@ import multiCores from './multi-cores'
 import { commonLocale } from './locales'
 import init from './init'
 import route from './route'
-import { response } from './utils'
+import responseBuilder from './utils/response-builder'
 import logger from './logger'
+import errorUtil from './utils/error'
 
 const mediator = new EventEmitter()
 const app = express()
@@ -42,7 +43,7 @@ mediator.once('boot.ready', () => {
         clientData: ['get', 'delete'].includes(req.method.toLowerCase()) ? req.query : req.body
       }
     })
-    return res.status(404).jsonp(response(false, {}, commonLocale.apiNotFound))
+    return res.status(404).jsonp(responseBuilder.build(false, {}, errorUtil.parseError(commonLocale.apiNotFound)))
   })
 
   // error handler
@@ -54,7 +55,7 @@ mediator.once('boot.ready', () => {
         clientData: ['get', 'delete'].includes(req.method.toLowerCase()) ? req.query : req.body
       }
     })
-    return res.status(500).jsonp(response(false, {}, commonLocale.serverError))
+    return res.status(500).jsonp(responseBuilder.build(false, {}, errorUtil.parseError(commonLocale.serverError)))
   })
 })
 

@@ -4,16 +4,14 @@ import net from 'net'
 import cluster from 'cluster'
 import os from 'os'
 import farmhash from 'farmhash'
-import { env } from './utils'
+import env from './utils/env'
 
 const NUMCPUS = os.cpus().length
 const debug = require('debug')('App')
 
-global.cronjobServerId = -1
-
 export default (app, mediator) => {
   // Set port
-  app.set('port', process.env.PORT || '5020')
+  app.set('port', process.env.PORT || '5000')
 
   // Create HTTP server
   let server = http.createServer(app)
@@ -22,8 +20,6 @@ export default (app, mediator) => {
     server.listen(app.get('port'))
 
     // require('./socketio')(server)
-
-    global.isIndexesServer = true
 
     // Emit to connect db
     setImmediate(() => {
@@ -43,15 +39,11 @@ export default (app, mediator) => {
     const spawn = (i) => {
       workers[i] = cluster.fork()
       if (global.cronjobServerId === -1) {
-        global.cronjobServerId = i
         workers[i].send({ isCronJobServer: true })
       }
 
       // Optional: Restart worker on exit
       workers[i].on('exit', () => {
-        if (i === global.cronjobServerId) {
-          global.cronjobServerId = -1
-        }
         debug(`worker pid ${workers[i] && workers[i].process ? workers[i].process.pid : 'UNDEFINED'} died, restarting...`)
         spawn(i)
       })

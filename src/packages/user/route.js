@@ -1,13 +1,7 @@
-/**
- * User routes
- * prefix: /users
- */
-
 import express from 'express'
-// import middleware from '../system/middleware'
 import UserCtrl from './controller'
-import validation from './validation'
-import { preQuery } from '../../utils'
+import { preQuery } from '../../utils/pre-query'
+import auth from '../system/authorizator'
 
 const router = express.Router()
 
@@ -17,15 +11,24 @@ const router = express.Router()
  */
 
 /**
- * @api {get} /me Get user brief info
- * @apiUse UserHeader
- * @apiName User
+ * @api {post} /register Register
+ * @apiGroup Users
  *
- * @apiGroup Me
+ * @apiName Register
  *
  */
-router.get('/me', UserCtrl.me)
+router.post('/register', UserCtrl.register)
 
-router.param('userId', preQuery.user)
+/**
+ * @api {get} /me Show user profile
+ * @apiUse UserHeader
+ * @apiGroup Users
+ *
+ * @apiName Me
+ *
+ */
+router.get('/me', auth.requireLogin, UserCtrl.show)
+
+// router.param('userId', preQuery.user)
 
 export default router

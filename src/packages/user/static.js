@@ -1,8 +1,9 @@
+import lodash from 'lodash'
 
-const foo = (bar) => {
-  return bar
+async function commonUserData(user) {
+  return lodash.pick(user, ['_id', 'name', 'email', 'roles'])
 }
 
 export default {
-  foo
+  commonUserData
 }

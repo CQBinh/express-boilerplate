@@ -1,29 +1,26 @@
-/* eslint object-shorthand: [0] */
-
-import crypto from 'crypto'
 import { mongoose, Schema } from '../../utils/mongoose'
-import { format } from '../../utils'
 import statics from './static'
+import methods from './method'
 
 const UserSchema = new Schema({
   name: String,
-  email: String,
-  phone: String,
-  crm: {
-    role: String,
-    city: String
-  }
+  email: {
+    type: String,
+    unique: true
+  },
+  hashed_password: String,
+  salt: String,
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: Date
 }, {
-  versionKey: false,
-  collection: 'users'
+  versionKey: false
 })
 
-// Index
-UserSchema.index({ 'crm.role': 1 }).index({ 'crm.city': 1 })
+UserSchema.index({ email: 1 })
 
-/**
- * Virtual
- */
 UserSchema.virtual('password').set(function (password) {
   this._password = password
   this.salt = this.makeSalt()
@@ -32,52 +29,16 @@ UserSchema.virtual('password').set(function (password) {
   return this._password
 })
 
-/**
- * Methods
- */
-UserSchema.methods = {
-  /**
-   * Authenticate - check if the passwords are the same
-   *
-   * @param {String} plainText
-   */
-  authenticate: function (plainText) {
-    return this.hashPassword(plainText) === this.get('hashed_password')
-  },
-
-  /**
-   * Make salt
-   *
-   * @return {String}
-   */
-  makeSalt: function () {
-    return crypto.randomBytes(16).toString('base64')
-  },
-
-  /**
-   * Hash password
-   *
-   * @param {String} password
-   */
-  hashPassword: function (password) {
-    if (!password || !this.get('salt')) return ''
-    const salt = Buffer.from(this.get('salt'), 'base64')
-    return crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha1').toString('base64')
-  }
-}
-
-/**
- * Static functions
- *
- */
 UserSchema.statics = statics
+
+UserSchema.methods = methods
 
 /**
  * Presave hook
  */
 UserSchema.pre('save', function (next) {
   // Set search string
-  this.searchString = format.searchString(this.name)
+  this.updatedAt = new Date()
 
   next()
 })

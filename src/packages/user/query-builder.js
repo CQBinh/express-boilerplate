@@ -1,5 +1,5 @@
 
-const foo = (bar) => {
+const foo = () => {
 }
 
 export default {

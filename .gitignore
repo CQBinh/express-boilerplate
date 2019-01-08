@@ -61,3 +61,5 @@ typings/
 src/files
 
 .DS_Store
+
+.idea
