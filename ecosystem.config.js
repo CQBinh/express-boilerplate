@@ -1,5 +1,5 @@
 /* eslint no-multi-str: [0] */
-const APP_NAME = 'Express template'
+const APP_NAME = 'Express_template'
 const IP = '123.123.123.123'
 const PORT = '1212'
 const PATH = '/home/user/express'

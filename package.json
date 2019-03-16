@@ -1,5 +1,5 @@
 {
-  "name": "Express_Template",
+  "name": "Express_Boilerplate",
   "author": "<CAO Quang Binh> caoquangbinh@gmail.com",
   "version": "1.0.0",
   "private": true,
@@ -7,6 +7,9 @@
     "dev": "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
     "start": "nodemon src/index.js --exec \"NODE_ENV=production node -r dotenv/config -r babel-register\"",
     "lint": "eslint --ext .js src"
+  },
+  "bin": {
+    "genModel": "./commands/model.js"
   },
   "babel": {
     "presets": [
