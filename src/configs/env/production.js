@@ -7,4 +7,9 @@ export default {
     connectTimeoutMS: 30000,
     socketTimeoutMS: 30000
   },
+  secret: Env.SECRET,
+  email: {
+    id: 'binh-prod@gmail.com',
+    pass: Env.EMAIL_PASS
+  }
 }

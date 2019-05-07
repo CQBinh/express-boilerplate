@@ -11,4 +11,8 @@ export default {
 
   // Secret for token
   secret: '8?@B##o!fV}5R8G',
+  email: {
+    id: 'binh-dev@gmail.com',
+    pass: 'kdjhfkdshf3478384'
+  }
 }
