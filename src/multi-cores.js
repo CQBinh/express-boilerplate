@@ -1,116 +1,95 @@
 import http from 'http'
-import net from 'net'
-import cluster from 'cluster'
-import os from 'os'
-import farmhash from 'farmhash'
 import env from './utils/env'
-
-const NUMCPUS = os.cpus().length
-const debug = require('debug')('App')
+import { mongoose } from './utils/mongoose'
 
 export default (app, mediator) => {
-  app.set('port', env.PORT || '5000')
+  validatePort()
+  const server = http.createServer(app).listen(env.PORT)
 
-  let server = http.createServer(app)
-
-  if (!env.isProduction()) {
-    server.listen(app.get('port'))
-
+  if (env.LOCAL_MODE === 'true') {
+    console.log('Running on local server')
+    global.isCronJobServer = true
+    global.isIndexesServer = true
     setImmediate(() => {
       mediator.emit('boot.ready')
     })
-    global.isCronJobServer = true
-    debug(`Server started on port ${app.get('port')}`)
+
+    server.on('error', onError)
+    handleSigInt(server)
+    handleMessages()
     return
   }
 
-  if (cluster.isMaster) {
-    console.log(`Master ${process.pid} is running`)
-    debug(`Listening on ${app.get('port')}`)
-    const workers = []
+  console.log(`Worker ${env.NODE_APP_INSTANCE} started with process id: ${process.pid}`)
 
-    const spawn = (i) => {
-      workers[i] = cluster.fork()
-      if (i === 0) {
-        workers[i].send({ isCronJobServer: true })
-      }
-      workers[i].on('exit', () => {
-        debug(`worker pid ${workers[i] && workers[i].process ? workers[i].process.pid : 'UNDEFINED'} died, restarting...`)
-        spawn(i)
-      })
-    }
-
-    for (let i = 0; i < NUMCPUS; i += 1) {
-      spawn(i)
-    }
-
-    const workerIndex = (ip, len) => {
-      console.log('requester ip', ip)
-      return farmhash.fingerprint32(ip) % len
-    }
-
-    // Create the outside facing server listening on our port.
-    server = net.createServer({ pauseOnConnect: true }, (connection) => {
-      const worker = workers[workerIndex(connection.remoteAddress, NUMCPUS)]
-      worker.send('sticky-session:connection', connection)
-    }).listen(app.get('port'))
-  } else {
-    console.log(`Worker ${process.pid} started`)
-    server = app.listen(0, () => {
-      // Socket io
-      // require('./socketio')(server)
-      process.send('ready')
-    })
-
-
-    // Listen to messages sent from the master. Ignore everything else.
-    process.on('message', (message, connection) => {
-      console.log('on message', message)
-      if (message.isCronJobServer) {
-        console.log('********************************************************************')
-        console.log(`*** THIS IS A CRONJOB SERVER WITH WORKER ID ${cluster.worker.id} ***`)
-        console.log('********************************************************************')
-        global.isCronJobServer = true
-        global.isIndexesServer = true
-      }
-      setImmediate(() => {
-        mediator.emit('boot.ready')
-      })
-
-      if (message !== 'sticky-session:connection') {
-        return
-      }
-      server.emit('connection', connection)
-
-      connection.resume()
-    })
+  if (process.env.NODE_APP_INSTANCE === '0') {
+    console.log('*************************************************')
+    console.log(`*** THIS IS A CRONJOB SERVER WITH WORKER ID ${env.NODE_APP_INSTANCE} ***`)
+    console.log('*************************************************')
+    global.isCronJobServer = true
+    global.isIndexesServer = true
   }
-
-  const onError = (error) => {
-    console.log('onError', error)
-    if (error.syscall !== 'listen') {
-      throw error
-    }
-
-    const bind = typeof port === 'string' ? `Pipe ${app.get('port')}` : `Port ${app.get('port')}`
-
-    // handle specific listen errors with friendly messages
-    switch (error.code) {
-      case 'EACCES':
-        console.error(`${bind} requires elevated privileges`)
-        process.exit(1)
-        break
-      case 'EADDRINUSE':
-        console.error(`${bind} is already in use`)
-        process.exit(1)
-        break
-      default:
-        throw error
-    }
-  }
+  setImmediate(() => {
+    mediator.emit('boot.ready')
+  })
 
   server.on('error', onError)
-  server.on('close', () => {
-    console.log('SERVER CLOSED')
+  handleSigInt(server)
+  handleMessages()
+}
+
+function validatePort() {
+  if (!env.PORT) {
+    console.log('\x1b[31m', '*** PLEASE SET PORT in .env file', '\x1b[0m')
+    throw new Error('\x1b[31m', '*** PLEASE SET PORT in .env file')
+    process.exit(1)
+  }
+}
+
+function handleSigInt(server) {
+  process.on('SIGINT', () => {
+    console.info('SIGINT signal received.')
+
+    server.close((err) => {
+      if (err) {
+        console.error(err)
+        process.exit(1)
+      }
+    })
+    mongoose.connection.close(() => {
+      console.log('Mongoose connection disconnected')
+      process.exit(0)
+    })
   })
+}
+
+function handleMessages() {
+  process.on('message', (msg) => {
+    if (msg === 'shutdown') {
+      console.log('Closing all connections...')
+      setTimeout(() => {
+        console.log('Finished closing connections')
+        process.exit(0)
+      }, 1500)
+    }
+  })
+}
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error
+  }
+
+  switch (error.code) {
+    case 'EACCES':
+      console.error(`Pipe ${env.PORT} requires elevated privileges`)
+      process.exit(1)
+      break
+    case 'EADDRINUSE':
+      console.error(`Port ${env.PORT} is already in use`)
+      process.exit(1)
+      break
+    default:
+      throw error
+  }
 }

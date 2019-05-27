@@ -1,15 +1,21 @@
+import env from '../../utils/env'
+
 export default {
-  // Db
   db: 'mongodb://localhost/express',
-  dbOptions: {
-    autoReconnect: true,
-    keepAlive: 30000,
-    connectTimeoutMS: 30000,
-    socketTimeoutMS: 30000
+  dbOptions: (options) => {
+    return {
+      useCreateIndex: true,
+      autoIndex: options.autoIndex,
+      autoReconnect: true,
+      useNewUrlParser: true,
+      keepAlive: 1,
+      connectTimeoutMS: 300000,
+      socketTimeoutMS: 300000
+    }
   },
-  secret: Env.SECRET,
+  secret: env.SECRET,
   email: {
     id: 'binh-prod@gmail.com',
-    pass: Env.EMAIL_PASS
+    pass: env.EMAIL_PASS
   }
 }

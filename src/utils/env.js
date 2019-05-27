@@ -10,5 +10,6 @@ function isDevelopment() {
 
 export default {
   isDevelopment,
-  isProduction
+  isProduction,
+  ...process.env
 }

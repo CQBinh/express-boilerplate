@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
+    "dev": "nodemon src/index.js --exec \"LOCAL_MODE=true node -r dotenv/config -r babel-register\"",
     "start": "nodemon src/index.js --exec \"NODE_ENV=production node -r dotenv/config -r babel-register\"",
     "lint": "eslint --ext .js src"
   },
@@ -37,6 +37,10 @@
   },
   "dependencies": {
     "async": "^2.6.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
     "cluster": "^0.7.7",
     "compression": "^1.7.2",
     "cookie-parser": "~1.4.3",
@@ -57,7 +61,7 @@
     "method-override": "^2.3.10",
     "module-alias": "^2.0.6",
     "moment": "^2.21.0",
-    "mongoose": "^5.0.11",
+    "mongoose": "^5.5.11",
     "morgan": "~1.9.0",
     "nodemailer": "^4.6.3",
     "socket.io": "^2.0.4",
@@ -66,10 +70,6 @@
     "winston-loggly-bulk": "^2.0.2"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-register": "^6.26.0",
     "eslint": "^4.19.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
